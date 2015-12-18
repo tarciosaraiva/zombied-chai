@@ -1,0 +1,25 @@
+{
+  "name": "zombied-chai",
+  "version": "1.0.0",
+  "description": "Chai Plugin for ZombieJS (http://zombie.js.org/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tarciosaraiva/zombied-chai.git"
+  },
+  "keywords": [
+    "zombie",
+    "chai",
+    "chai-plugin",
+    "assertion"
+  ],
+  "author": "Tarcio Saraiva <tarcio@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tarciosaraiva/zombied-chai/issues"
+  },
+  "homepage": "https://github.com/tarciosaraiva/zombied-chai#readme"
+}
