@@ -7,6 +7,6 @@ after_success:
   - git config --global user.name "Travis CI"
   - export VERSION_NUMBER=1.0.$TRAVIS_BUILD_NUMBER
   - npm version "$VERSION_NUMBER"
-  - git push --tags
+  - git push -q https://tarciosaraiva:$GITHUB_API_KEY@github.com/tarciosaraiva/zombied-chai --tags
 after_script:
   - codeclimate-test-reporter < ./coverage/lcov.info
