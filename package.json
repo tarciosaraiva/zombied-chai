@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run lint && babel lib -d dist",
     "lint": "eslint ./lib",
-    "test": "babel-node ./node_modules/isparta/bin/isparta cover --report html ./node_modules/mocha/bin/_mocha -- ./test/unit"
+    "test": "./node_modules/.bin/babel-node ./node_modules/.bin/isparta cover --report lcov ./node_modules/mocha/bin/_mocha"
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,5 @@
+instrumentation:
+  root: lib
 check:
   global:
     statements: 80
