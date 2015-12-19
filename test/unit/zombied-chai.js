@@ -52,6 +52,16 @@ describe('Zombied-Chai', () => {
 
   describe('when unsucessful request', () => {
 
+    browser.on('error', error => { });
+
+    before(done => {
+      browser.visit('http://localhost:3000/sad-server', () => done());
+    });
+
+    it('should assert "unsuccessful" request', (done) => {
+      browser.should.be.unsuccessful;
+      done();
+    });
   });
 
 });
