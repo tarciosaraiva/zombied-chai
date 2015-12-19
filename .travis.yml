@@ -13,6 +13,6 @@ after_success:
   - npm version "$VERSION_NUMBER"
   - git add -f dist
   - git commit -m "Adding release dist folder [ci skip]"
-  - git push -q https://tarciosaraiva:$GITHUB_API_KEY@github.com/tarciosaraiva/zombied-chai origin "$VERSION_NUMBER" --tags
+  - git push -q https://tarciosaraiva:$GITHUB_API_KEY@github.com/tarciosaraiva/zombied-chai "$VERSION_NUMBER" --tags
 after_script:
   - codeclimate-test-reporter < ./coverage/lcov.info
