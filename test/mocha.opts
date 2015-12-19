@@ -1,0 +1,7 @@
+--bail
+--reporter spec
+--async-only
+--colors
+--check-leaks
+--recursive
+--compilers js:babel-register
