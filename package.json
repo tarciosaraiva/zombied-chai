@@ -9,7 +9,7 @@
     "test": "npm run lint && npm run test:cv",
     "test:cv": "./node_modules/.bin/babel-node ./node_modules/.bin/isparta cover --report lcov ./node_modules/mocha/bin/_mocha",
     "preversion": "npm run build",
-    "postversion": "git add -f dist && git commit --amend --no-edit"
+    "postversion": "git add dist && git commit --amend --no-edit"
   },
   "repository": {
     "type": "git",
