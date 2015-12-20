@@ -16,7 +16,16 @@ after_success:
 after_script:
 - codeclimate-test-reporter < ./coverage/lcov.info
 deploy:
-  provider: npm
+- provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: "$GITHUB_API_KEY"
+  file: "dist/index.js"
+  on:
+    tags: false
+
+- provider: npm
+  skip_cleanup: true
   email: tarcio@gmail.com
   api_key:
     secure: sjSCUX81wHdjCrwMAH41IMKel3K8oQ7vwTSXZ0i4tkovJsJ45eTFAnRZZQnuIJSKL6xiX4HH2GRRRAvs3TypyV3C0iIT6M0GTh8I6xzNV8NlnqeLUWqIXAoNJ+sSgQcAqMlm3MWsWi2FQCYOQXZgD6VAIinM0LVzNIDsPFrwwvUM3ioSPDIVtQ6vcPkrYRYMjY3vhmjCzVQqjJRz40vZpCGImTZJET1e485fwmuJOiHYTkts+oz9DFAXu3QdkLUCPBslKnze8P3H92Vd33PrmyHVmIOwbCGp5Q9nErk6lYPK+sesiaxm9VptVB9CO1Gof7Oq2pe4laOAvSK+W1+f3lW87e0TRI12QM2rXy3d4OxhfyFNwuhNiQYXjs9opIzQ26lfwA/aoRj8xkLPUV3/eXYcOfRJwo7+Jnki5PNrECem/1mjEdTdFBJnlMeZVTDtfxfa8o6cZFstIsosqBBhug6i+32zkVN1XOHRX8vdfE8whoBG1awSjDBHy/OO4MILWMJkmW34BL6jVEWux4uIqiFY4cSSoXSjAGLLvzzRfGWTmF8wopgKz0M/3bn8puLhBOpWLk5eEJ6vEFqmhWuH+NX3ekJO0OksDcBrjSxH3KTsXpmsqVMZxi7xabPS/9lrLSHPAIf9/4a7VOyF7rUDfKhwejimPGCdHNQzQWQlj4I=
