@@ -13,7 +13,7 @@ before_deploy:
 - git add -f dist
 - git commit --amend --no-edit
 - git push -q https://tarciosaraiva:$GITHUB_API_KEY@github.com/tarciosaraiva/zombied-chai master --tags
-- ls -l -R
+- ls -l
 deploy:
 - provider: releases
   skip_cleanup: true
