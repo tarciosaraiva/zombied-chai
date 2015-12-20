@@ -16,7 +16,7 @@ before_deploy:
 - npm version "$VERSION_NUMBER"
 - git add -f dist
 - git commit --amend --no-edit
-- git push -q https://tarciosaraiva:$GITHUB_API_KEY@github.com/tarciosaraiva/zombied-chai --tags
+- git push -q https://tarciosaraiva:$GITHUB_API_KEY@github.com/tarciosaraiva/zombied-chai origin master --tags
 deploy:
   provider: npm
   skip_cleanup: true
