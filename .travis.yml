@@ -1,7 +1,7 @@
 language: node_js
 branches:
-  only:
-  - master
+  except:
+    - /^v[0-9]*/
 addons:
   code_climate:
     repo_token: 9781c5da8df01dc106ce20a685ef577563db4f4b0dcdf4d5a9132499c945ea8a
@@ -12,7 +12,7 @@ before_deploy:
 - npm version "$VERSION_NUMBER"
 - git add -f dist
 - git commit --amend --no-edit
-- git push -q https://tarciosaraiva:$GITHUB_API_KEY@github.com/tarciosaraiva/zombied-chai master --tags
+- git push -q https://tarciosaraiva:$GITHUB_API_KEY@github.com/tarciosaraiva/zombied-chai --tags
 - ls -l
 deploy:
 - provider: releases
@@ -22,6 +22,7 @@ deploy:
   file: "dist/index.js"
   on:
     tags: false
+    all_branches: true
 
 - provider: npm
   skip_cleanup: true
