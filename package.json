@@ -1,6 +1,6 @@
 {
   "name": "zombied-chai",
-  "version": "1.0.46",
+  "version": "1.0.47",
   "description": "Chai Plugin for ZombieJS (http://zombie.js.org/)",
   "main": "dist",
   "scripts": {
