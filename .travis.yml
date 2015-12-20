@@ -9,8 +9,11 @@ before_deploy:
 - git config --global user.email "builds@travis-ci.com"
 - git config --global user.name "Travis CI"
 - export VERSION_NUMBER=1.0.$TRAVIS_BUILD_NUMBER
-- npm version "$VERSION_NUMBER"
+- export TRAVIS_TAG="v$VERSION_NUMBER"
+- export GIT_TAG="v$VERSION_NUMBER"
+- npm --no-git-tag-version version "$VERSION_NUMBER"
 - git add -f dist
+- git tag $GIT_TAG -a -m "Auto generated tag from TravisCI"
 - git commit --amend --no-edit
 - git push -q https://tarciosaraiva:$GITHUB_API_KEY@github.com/tarciosaraiva/zombied-chai --tags
 - ls -l
