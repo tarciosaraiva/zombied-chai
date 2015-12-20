@@ -22,6 +22,7 @@
     "assertion",
     "testing"
   ],
+  "engines" : { "node" : ">=4" },
   "author": "Tarcio Saraiva <tarcio@gmail.com>",
   "license": "MIT",
   "bugs": {

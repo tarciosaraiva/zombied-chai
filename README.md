@@ -8,3 +8,41 @@
 A plugin for Chai that wraps ZombieJS assertions, but with a better DSL.
 
 ## Assertions
+Not all assertions are implemented yet but you already can do some basic things:
+
+<table>
+    <tr>
+        <th>Zombie assertion</th>
+        <th>Zombied-Chai assertion</th>
+    </tr>
+    <tr>
+        <td>browser.assert.success</td>
+        <td>browser.should.be.successful</td>
+    </tr>
+    <tr>
+        <td>browser.assert.status(200)</td>
+        <td>browser.should.have.status(200)</td>
+    </tr>
+    <tr>
+        <td>browser.assert.element('#selector')</td>
+        <td>browser.should.have.element('#selector')</td>
+    </tr>
+    <tr>
+        <td>browser.assert.className('#selector', 'foo')</td>
+        <td>browser.should.have.element('#selector').withClass('foo')</td>
+    </tr>
+    <tr>
+        <td>browser.assert.hasNoClass('#selector', 'foo')</td>
+        <td>browser.should.have.element('#selector').withoutClass('foo')</td>
+    </tr>
+    <tr>
+        <td>browser.assert.attribute('#selector', 'foo', 'bar')</td>
+        <td>browser.should.have.element('#selector').withAttribute('foo', 'bar')</td>
+    </tr>
+    <tr>
+        <td>browser.assert.attribute('#selector', 'data-foo', 'bar')</td>
+        <td>browser.should.have.element('#selector').withData('foo', 'bar')</td>
+    </tr>
+</table>
+
+Check the tests for all assertions. More assertions will come in time.
