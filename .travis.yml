@@ -9,8 +9,9 @@ after_success:
 - git config --global user.email "builds@travis-ci.com"
 - git config --global user.name "Travis CI"
 - export VERSION_NUMBER=1.0.$TRAVIS_BUILD_NUMBER
+- git add -f dist
 - npm version "$VERSION_NUMBER"
-- git push -q https://tarciosaraiva:$GITHUB_API_KEY@github.com/tarciosaraiva/zombied-chai --tags
+- git push -q https://tarciosaraiva:$GITHUB_API_KEY@github.com/tarciosaraiva/zombied-chai master --tags
 after_script:
 - codeclimate-test-reporter < ./coverage/lcov.info
 deploy:
