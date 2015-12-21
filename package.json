@@ -1,6 +1,6 @@
 {
   "name": "zombied-chai",
-  "version": "1.0.63",
+  "version": "1.0.64",
   "description": "Chai Plugin for ZombieJS (http://zombie.js.org/)",
   "main": "dist",
   "scripts": {
@@ -22,7 +22,9 @@
     "assertion",
     "testing"
   ],
-  "engines" : { "node" : ">=4" },
+  "engines": {
+    "node": ">=4"
+  },
   "author": "Tarcio Saraiva <tarcio@gmail.com>",
   "license": "MIT",
   "bugs": {
