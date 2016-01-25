@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-import chai from 'chai';
-import zombiedChai from '../../lib';
+import chai from 'chai'
+import zombiedChai from '../../lib'
 
-chai.should();
-chai.use(zombiedChai);
+chai.should()
+chai.use(zombiedChai)
