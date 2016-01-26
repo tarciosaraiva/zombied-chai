@@ -5,15 +5,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (_chai, utils) {
-
   function assertBrowserInstance(obj) {
-    new _chai.Assertion(obj).to.be.instanceof(_zombie2.default);
-    return obj;
+    new _chai.Assertion(obj.browser || obj).to.be.instanceof(_zombie2.default);
+    return obj.browser || obj;
   }
 
-  function assertElementIsAnObject(el) {
-    new _chai.Assertion(el).to.be.instanceof(Object);
-    return el;
+  function assertElementIsAnObject(obj) {
+    new _chai.Assertion(obj.$el || obj).to.be.instanceof(Object);
+    return obj.$el || obj;
+  }
+
+  function assertParsedURL(obj) {
+    var assertion = new _chai.Assertion(obj.parsedUrl || obj);
+    assertion.to.have.ownProperty('protocol');
+    assertion.to.have.ownProperty('hostname');
+    assertion.to.have.ownProperty('query');
+    assertion.to.have.ownProperty('pathname');
+    return obj.parsedUrl || obj;
   }
 
   _chai.Assertion.addProperty('successful', function () {
@@ -41,7 +49,25 @@ exports.default = function (_chai, utils) {
 
     this.assert($el !== undefined, 'expected #{exp} to be present in the DOM', 'expected #{exp} to not be present in the DOM', el, $el);
 
-    utils.flag(this, 'object', $el);
+    var zombiedOject = { browser: browser, $el: $el };
+    utils.flag(this, 'object', zombiedOject);
+  });
+
+  _chai.Assertion.addChainableMethod('link', function (el, text) {
+    var browser = assertBrowserInstance(this._obj);
+
+    var $el = browser.query(el);
+
+    this.assert($el !== undefined && $el.name === 'a' && $el.textContent === text, 'expected #{exp} to be a link present in the DOM', 'expected #{exp} to not be a link present in the DOM', el, $el);
+
+    var zombiedOject = { browser: browser, $el: $el };
+    utils.flag(this, 'object', zombiedOject);
+  });
+
+  _chai.Assertion.addMethod('withHref', function (href) {
+    var element = assertElementIsAnObject(this._obj);
+
+    this.assert(element.getAttribute('href') === href, 'expected element to have href #{exp} but was #{act}', 'expected element to not have href #{act}', href, element);
   });
 
   _chai.Assertion.addMethod('withText', function (text) {
@@ -74,10 +100,51 @@ exports.default = function (_chai, utils) {
 
     this.assert(element.getAttribute('data-' + name) === dataValue, 'expected element to have data attribute #{exp} but it was not found', 'expected element to not have data attribute #{exp} but it was found', '[data-' + name + '="' + dataValue + '"]', element);
   });
+
+  _chai.Assertion.addProperty('focused', function () {
+    var browser = assertBrowserInstance(this._obj);
+    var element = assertElementIsAnObject(this._obj);
+
+    this.assert(browser.activeElement === element, 'expected element to be focused but it wasn\'t', 'expected element to not have focus but it was focused', '', element);
+  });
+
+  _chai.Assertion.addChainableMethod('url', function () {
+    var browser = assertBrowserInstance(this._obj);
+
+    var url = browser.location.href;
+
+    this.assert(url !== undefined, 'expected URL to be available', 'expected URL to not be available');
+
+    var zombiedOject = { browser: browser, parsedUrl: (0, _url.parse)(url) };
+    utils.flag(this, 'object', zombiedOject);
+  });
+
+  _chai.Assertion.addMethod('withPath', function (path) {
+    var url = assertParsedURL(this._obj);
+
+    this.assert(url.pathname === path, 'expected URL to have path #{exp} but was #{act}', 'expected URL to not have path #{exp} but was #{act}', path, url);
+  });
+
+  _chai.Assertion.addMethod('withHost', function (host) {
+    var url = assertParsedURL(this._obj);
+
+    this.assert(url.hostname === host, 'expected URL to have host #{exp} but was #{act}', 'expected URL to not have host #{exp} but was #{act}', host, url);
+  });
+
+  _chai.Assertion.addMethod('withQuery', function (queryName, queryValue) {
+    var url = assertParsedURL(this._obj);
+
+    url.query.should.match(/^([\w-]+(=[\w-]*)?(&[\w-]+(=[\w-]*)?)*)?$/);
+    var query = url.query.split('=');
+
+    this.assert(query[0] === queryName && query[1] === queryValue, 'expected URL to have query #{exp} but was #{act}', 'expected URL to not have query #{exp} but was #{act}', '?' + queryName + '=' + queryValue, url);
+  });
 };
 
 var _zombie = require('zombie');
 
 var _zombie2 = _interopRequireDefault(_zombie);
+
+var _url = require('url');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
