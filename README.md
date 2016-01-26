@@ -16,36 +16,63 @@ Not all assertions are implemented yet but you already can do some basic things:
 
 <table>
     <tr>
-        <th>Zombie assertion</th>
-        <th>Zombied-Chai assertion</th>
+        <th>Zombie assertion<br/>`browser.assert`</th>
+        <th>Zombied-Chai assertion<br/>`browser.should.be/have`</th>
     </tr>
     <tr>
-        <td>browser.assert.success</td>
-        <td>browser.should.be.successful</td>
+        <td>`.success`</td>
+        <td>`.successful`</td>
     </tr>
     <tr>
-        <td>browser.assert.status(200)</td>
-        <td>browser.should.have.status(200)</td>
+        <td>`.status(200)`</td>
+        <td>`.status(200)`</td>
     </tr>
     <tr>
-        <td>browser.assert.element('#selector')</td>
-        <td>browser.should.have.element('#selector')</td>
+        <td>`.element('#selector')`</td>
+        <td>`.element('#selector')`</td>
     </tr>
     <tr>
-        <td>browser.assert.className('#selector', 'foo')</td>
-        <td>browser.should.have.element('#selector').withClass('foo')</td>
+        <td>`.className('#selector', 'foo')`</td>
+        <td>`.element('#selector').withClass('foo')`</td>
     </tr>
     <tr>
-        <td>browser.assert.hasNoClass('#selector', 'foo')</td>
-        <td>browser.should.have.element('#selector').withoutClass('foo')</td>
+        <td>`.hasNoClass('#selector', 'foo')`</td>
+        <td>`.element('#selector').withoutClass('foo')`</td>
     </tr>
     <tr>
-        <td>browser.assert.attribute('#selector', 'foo', 'bar')</td>
-        <td>browser.should.have.element('#selector').withAttribute('foo', 'bar')</td>
+        <td>`.attribute('#selector', 'foo', 'bar')`</td>
+        <td>`.element('#selector').withAttribute('foo', 'bar')`</td>
     </tr>
     <tr>
-        <td>browser.assert.attribute('#selector', 'data-foo', 'bar')</td>
-        <td>browser.should.have.element('#selector').withData('foo', 'bar')</td>
+        <td>`.attribute('#selector', 'data-foo', 'bar')`</td>
+        <td>`.element('#selector').withData('foo', 'bar')`</td>
+    </tr>
+    <tr>
+        <td>`.hasFocus('#selector')`</td>
+        <td>`.element('#selector').focused`</td>
+    </tr>
+    <tr>
+        <td>`.link('#selector', 'link text')`</td>
+        <td>`.link('#selector', 'link text')`</td>
+    </tr>
+    <tr>
+        <td>`.link('#selector', 'link text', 'url')`</td>
+        <td>`.link('#selector', 'link text').withHref('#href')`</td>
+    </tr>
+    <tr>
+        <td rowspan="3">`.url('url|obj|regex')`</td>
+        <td>`.url().withHost('host')`</td>
+    </tr>
+    <tr>
+        <td>`.url().withPath('/path')`</td>
+    </tr>
+    <tr>
+        <td>`.url().withQuery('a', 'b')`</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+        You can chain all this<br/>
+        `.url().withHost('host').withPath('/').withQuery('a', 'b')`</td>
     </tr>
 </table>
 
