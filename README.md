@@ -11,6 +11,16 @@
 
 A plugin for Chai that wraps ZombieJS assertions, but with a better DSL.
 
+If you are using `should` or `expect` in Chai, instead of writing
+```
+browser.assert.status(200)
+```
+  you can write
+```
+browser.should.have.status(200)
+expect(browser).to.have.status(200)
+```
+
 ## Assertions
 Not all assertions are implemented yet but you already can do some basic things:
 
@@ -31,7 +41,8 @@ Not all assertions are implemented yet but you already can do some basic things:
 |`.url('url|obj|regex')`|`.url().withQuery('a', 'b')`|
 
 You can chain all this:
-
-    .url().withHost('host').withPath('/').withQuery('a', 'b')
+```
+.url().withHost('host').withPath('/').withQuery('a', 'b')
+```
 
 Check the tests for all assertions. More assertions will come in time.
