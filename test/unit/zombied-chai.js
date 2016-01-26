@@ -48,7 +48,42 @@ describe('Zombied-Chai', () => {
       element.withAttribute('target', '_blank');
       done();
     });
+
+    it('should assert chainable "element.focused"', done => {
+      browser.focus('input')
+      browser.should.have.element('input').focused;
+      done();
+    });
+
+    it('should assert chainable "link.withHref"', done => {
+      browser.should.have.element('.link-google', 'Go to Google-land').withHref('http://www.google.com');
+      done();
+    });
   });
+
+  describe('when URL', () => {
+    before(done => browser.visit('http://localhost:3000/?test=success', done));
+
+    it('should assert chainable "url.withPath"', done => {
+      browser.should.have.url().withPath('/')
+      done();
+    })
+
+    it('should assert chainable "url.withHost"', done => {
+      browser.should.have.url().withHost('localhost')
+      done();
+    })
+
+    it('should assert chainable "url.withQuery"', done => {
+      browser.should.have.url().withQuery('test', 'success')
+      done();
+    })
+
+    it('should assert chainable "url.withHost.withPath.withQuery"', done => {
+      browser.should.have.url().withHost('localhost').withPath('/').withQuery('test', 'success')
+      done();
+    })
+  })
 
   describe('when unsucessful request', () => {
 
