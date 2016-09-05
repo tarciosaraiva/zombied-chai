@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "chai": "3.x",
-    "codeclimate-test-reporter": "0.x",
     "express": "4.x",
     "mocha": "3.x",
     "standard": "8.x",

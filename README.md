@@ -1,7 +1,6 @@
 [![npm version](https://badge.fury.io/js/zombied-chai.svg)](https://badge.fury.io/js/zombied-chai)
 [![Build Status](https://travis-ci.org/tarciosaraiva/zombied-chai.svg)](https://travis-ci.org/tarciosaraiva/zombied-chai)
 [![Code Climate](https://codeclimate.com/github/tarciosaraiva/zombied-chai/badges/gpa.svg)](https://codeclimate.com/github/tarciosaraiva/zombied-chai)
-[![Test Coverage](https://codeclimate.com/github/tarciosaraiva/zombied-chai/badges/coverage.svg)](https://codeclimate.com/github/tarciosaraiva/zombied-chai/coverage)
 [![Issue Count](https://codeclimate.com/github/tarciosaraiva/zombied-chai/badges/issue_count.svg)](https://codeclimate.com/github/tarciosaraiva/zombied-chai)
 [![devDependency Status](https://david-dm.org/tarciosaraiva/zombied-chai/dev-status.svg)](https://david-dm.org/tarciosaraiva/zombied-chai#info=devDependencies)
 

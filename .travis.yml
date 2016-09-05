@@ -1,18 +1,8 @@
 language: node_js
 node_js:
   - "4"
-env:
-- CXX=g++-4.8
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - g++-4.8
-  code_climate:
-    repo_token: 9781c5da8df01dc106ce20a685ef577563db4f4b0dcdf4d5a9132499c945ea8a
-after_script:
-- codeclimate-test-reporter < ./coverage/lcov.info
+  - "5"
+  - "6"
 deploy:
 - provider: releases
   skip_cleanup: true
