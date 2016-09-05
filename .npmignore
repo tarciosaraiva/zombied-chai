@@ -1,0 +1,8 @@
+# folders
+
+coverage/
+test/
+
+# files
+.editorconfig
+.travis.yml
