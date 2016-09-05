@@ -5,4 +5,3 @@
 --colors
 --check-leaks
 --recursive
---compilers js:babel-register

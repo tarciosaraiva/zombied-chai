@@ -1,7 +1,7 @@
 'use strict'
 
-import chai from 'chai'
-import zombiedChai from '../../lib'
+var chai = require('chai')
+var zombiedChai = require('../../lib')
 
 chai.should()
 chai.use(zombiedChai)

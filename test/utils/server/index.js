@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
-import express from 'express';
-import { resolve } from 'path';
+var express = require('express')
+var resolve = require('path').resolve
 
-const assets = resolve(__dirname, 'assets');
-const server = express();
+const assets = resolve(__dirname, 'assets')
+const server = express()
 
-server.use('/', express.static(assets));
+server.use('/', express.static(assets))
 
-export default server;
+module.exports = server
