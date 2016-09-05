@@ -20,6 +20,19 @@ browser.should.have.status(200)
 expect(browser).to.have.status(200)
 ```
 
+## How to use it
+On your specHelper.js make sure you load `zombied-chai` like below:
+
+```javascript
+'use strict'
+
+var chai = require('chai')
+var zombiedChai = require('zombied-chai')
+
+chai.should()
+chai.use(zombiedChai)
+```
+
 ## Assertions
 Not all assertions are implemented yet but you already can do some basic things:
 
