@@ -3,15 +3,18 @@ node_js:
   - "4"
   - "5"
   - "6"
+before_deploy:
+- npm prune --production
+- tar -czvf zombiedchai.tar.gz lib package.json README.md LICENSE
 deploy:
 - provider: releases
   skip_cleanup: true
   api_key:
     secure: WCuoQuhPjxG7SI7/2cO9hAizTIhctgASEwZu2VM268AHuPtS8pJ6J2dX1GnF77WCGpDmTzgOLstKHAtyRTDlTHyzYWGwCBEyi4vzMR97gMBelqH3s7R9+U5A/EW+R4wnXtFsUD8bgwvt+4/xi1Gj/3OGniWheYM9PCX+7CmOmleaYp2KRB7wK7ySO0wSut4d0iD75yHlTykRXMj8YcMg4BVAM33BEcGAv9Gk0e326zqp8pzmUNrmoV2J4rirVhaBVh/sYafDMtaLG8qINgIsSRhpWvLtGAXx0clXtBmQ90Zt9587QdMXY1nt6JLOZEaRVByidk9fMr9bGCqlzyjB400oMKUaK1/icWXBNGqEZKfA8MZ+KDOx+FsoKhvFou8RLkSXopNyQ5YL64xT/HGOSlj5HUXYOkVVugBKTuNPJyruOT24xDUrpiI0R05k+zLrtrdB0H+gpjhvHRvzWjiZFvM6w386zqC7VYKM74W4w7dbbh7tTINpvGaoCXolL7LqlViEK5ydbXah3MclqEJJc4nKm7R98lQc1/RvoCslr0xViQqQZtSt5lpszRgAH19QLf6Pqn2cLfLZQiPfmB9LQPBI6NEBTRxEh+PWy5ZvlfFwSA8ja/O2NfGf49+7XXA+karB6F575Pa60PeTKH0/DS1aQOxiP0q6RO2ajoCORa8=
-  file: dist/index.js
+  file: zombiedchai.tar.gz
   on:
     tags: true
-    repo: tarciosaraiva/zombied-chai
+    node: '4'
 - provider: npm
   skip_cleanup: true
   email: tarcio@gmail.com
@@ -19,4 +22,4 @@ deploy:
     secure: mUgOoDJ+m6+IKUiE4Gg+gUtzQO1ueixMsWAhYcvtbwimSN5DY9coVnzc8LvhUjaXyRr2S+qOrN33TtslseP1iNbPyPt773tKpx+qUj3YAzQNoVD8amCsy6m2yC+9EoIIp32peMbHF/MFXTb7id0pnKL71kOqzpPiBm+ai5t30snoZuG5Bzw3X5go9rJE5BpuCwqOYq4MizQMh+dtjRSlB2oiQDXtyBgGujNYw6eINI3J4FurUvO45EjjZ63r5qmBsqqCQTO/JAT8XHec1AB7bbn2mrGsEcnbmk5ID9V6hUt7RsQEs/3qRgpgBxrcEaNagJWYeT4jJTr5+y/RzJT7iArNgFnIhg8iqHEEu4gEgNrrwYRltF3shJAk2E7n55z6B0tcA+fB3qVMLZRn5Dl0g/MKo9POuQeyNvmY2R5NmjyqVEu98IxK5LE7fjO7ydivzsa2If1yT2knAeCFjNs/e2XoSl9MYA6v+3xwsgvNVhznVT9S8WNTsV65xZAL3OYz98wkhxOaDdEKw+WUfiCwpnqpy8hbNutaavvx2Kkqx3QgHEIJ79KKMkE3F4ZK9u7W+S5pQyTXlHZ7ZM1hlD46bfIWu/bxHm154fQItYbcg/lY8LSG3RUlMu3zXze6Nm2avoEEYj73Au2aqpDeRqlyKaXB0AzRChsZnLXTjW0yd8E=
   on:
     tags: true
-    repo: tarciosaraiva/zombied-chai
+    node: '4'
